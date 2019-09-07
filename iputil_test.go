@@ -10,12 +10,12 @@ import (
 
 func TestIsIPv4(t *testing.T) {
 	tests := []struct {
-		ip   net.IPAddr
+		ip   net.IP
 		want bool
 	}{
-		{ip: net.IPAddr{IP: net.ParseIP("192.168.0.1")}, want: true},
-		{ip: net.IPAddr{IP: net.ParseIP("2001:db8::1")}, want: false},
-		{ip: net.IPAddr{}, want: false},
+		{ip: net.ParseIP("192.168.0.1"), want: true},
+		{ip: net.ParseIP("2001:db8::1"), want: false},
+		{ip: nil, want: false},
 	}
 	for _, tc := range tests {
 		got := IsIPv4(tc.ip)
@@ -27,12 +27,12 @@ func TestIsIPv4(t *testing.T) {
 
 func TestIsIPv6(t *testing.T) {
 	tests := []struct {
-		ip   net.IPAddr
+		ip   net.IP
 		want bool
 	}{
-		{ip: net.IPAddr{IP: net.ParseIP("192.168.0.1")}, want: false},
-		{ip: net.IPAddr{IP: net.ParseIP("2001:db8::1")}, want: true},
-		{ip: net.IPAddr{}, want: false},
+		{ip: net.ParseIP("192.168.0.1"), want: false},
+		{ip: net.ParseIP("2001:db8::1"), want: true},
+		{ip: nil, want: false},
 	}
 	for _, tc := range tests {
 		got := IsIPv6(tc.ip)
