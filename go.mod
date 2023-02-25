@@ -1,5 +1,5 @@
 module github.com/icemarkom/iputil
 
-go 1.12
+go 1.20
 
-require github.com/google/go-cmp v0.3.1
+require github.com/google/go-cmp v0.5.9
